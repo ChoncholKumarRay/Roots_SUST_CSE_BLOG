@@ -171,3 +171,12 @@ img {
 .text {
     height: 200px;
 }
+
+
+.centered-image {
+    width: 40%;
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

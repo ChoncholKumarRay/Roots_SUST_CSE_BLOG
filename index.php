@@ -26,25 +26,24 @@ if (
 </head>
 
 <body>
-
     <?php
-
     include './include/main_menu.php';
-
     ?>
-    <div>
-        <h2>This is the index page</h2>
-        <h4>Current User Registration ID: <?php echo $_SESSION['reg_no'] ?></h4>
-        <h4>Current User Username: <?php echo $_SESSION['username'] ?></h4>
-        <h4>Current User User ID: <?php echo $_SESSION['user_id'] ?></h4>
-        <h4>Current User Profile Picture: <?php echo $_SESSION['profile_picture'] ?></h4>
+    <?php if ($logged == false) { ?>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <img src="./image/alien.png" alt="Log in to see post" class="shadow m-3 centered-image mb-3">
+        </div>
+    <?php } else { ?>
+        <div>
+            <h2>This is the index page</h2>
+            <h4>Current User Registration ID: <?php echo $_SESSION['reg_no'] ?></h4>
+            <h4>Current User Username: <?php echo $_SESSION['username'] ?></h4>
+            <h4>Current User User ID: <?php echo $_SESSION['user_id'] ?></h4>
+            <h4>Current User Profile Picture: <?php echo $_SESSION['profile_picture'] ?></h4>
 
-    </div>
+        </div>
 
-    <?php
-
-    ?>
-
+    <?php } ?>
 
 </body>
 
