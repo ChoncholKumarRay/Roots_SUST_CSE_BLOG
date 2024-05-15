@@ -1,0 +1,162 @@
+img {
+    max-width: 100%;
+}
+
+
+.main-blog-card {
+    width: 90%;
+}
+
+.main-blog {
+    width: 70%;
+}
+
+.w-450 {
+    width: 450px;
+}
+
+.vh-100 {
+    min-height: 100vh;
+}
+
+/*admin*/
+.section-1 {
+    width: 100%;
+    padding: 15px;
+}
+
+.main-table {
+    width: 90%;
+    max-width: 700px;
+}
+
+.react-btns i {
+    font-size: 24px;
+    color: #222;
+    cursor: pointer;
+}
+
+.react-btns a {
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+}
+
+.react-btns a:hover {
+    opacity: .8;
+}
+
+.react-btns .like:hover {
+    color: #0088FF;
+}
+
+.react-btns .liked {
+    color: #0088FF;
+}
+
+.comments .comment span {
+    color: #0088FF;
+}
+
+@media only screen and (max-width: 768px) {
+
+    /* For mobile phones: */
+    .aside-main {
+        display: none;
+    }
+
+    .main-blog {
+        width: 100%;
+    }
+
+    .main-blog-card {
+        width: 100%;
+    }
+}
+
+
+
+.post-center {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+
+.centered-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.backdrop {
+    background-color: #c97cf2a4;
+
+}
+
+.frontdrop {
+    background-color: #bd59f2b4;
+    border-radius: 2%;
+}
+
+.post-center {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.image-container {
+    width: 30%;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+    padding: 0%;
+}
+
+.navbar {
+    background-color: #6f42c1;
+    color: #fff;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: inherit;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #06274b;
+}
+
+.navbar li.right {
+    float: right;
+    /* Float the right-aligned list item to the right */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-brand img {
+    align-self: center;
+}
+
+.navbar-brand b {
+    align-self: center;
+}
+
+.dp {
+    border-radius: 50%;
+    overflow: hidden;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
