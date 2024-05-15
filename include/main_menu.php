@@ -13,7 +13,7 @@
                     <a class="nav-link" href="../about.php">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user-add-post.php">Create Post</a>
+                    <a class="nav-link" href="/create-post.php">Create Post<i class="fa-regular fa-pen-to-square"></i></a>
                 </li>
             </ul>
 
