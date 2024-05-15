@@ -180,3 +180,42 @@ img {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+
+.card-img-top {
+    border-radius: 50%;
+    height: 250px !important;
+    width: 250px !important;
+    position: relative;
+    left: 80px;
+    top: -80px;
+    object-fit: cover;
+}
+
+.card {
+    border-radius: 0;
+    cursor: pointer;
+    margin-top: 100px !important;
+}
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+}
+
+.card-body {
+    margin-top: -50px;
+}
+
+.bi {
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-img-top {
+
+        left: 48px !important;
+
+    }
+}
