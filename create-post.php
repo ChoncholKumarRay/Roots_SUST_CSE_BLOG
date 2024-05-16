@@ -37,13 +37,13 @@ if ($logged == false) {
         <h3 class="mb-3">Write what's on your mind</h3>
         <?php if (isset($_GET['error'])) { ?>
             <div class="alert alert-warning">
-                <? htmlspecialchars($_GET['error']) ?>
+                <?php echo htmlspecialchars($_GET['error']) ?>
             </div>
         <?php } ?>
 
         <?php if (isset($_GET['success'])) { ?>
             <div class="alert alert-success">
-                <? htmlspecialchars($_GET['success']) ?>
+                <?php echo htmlspecialchars($_GET['success']) ?>
             </div>
         <?php } ?>
 
@@ -55,7 +55,7 @@ if ($logged == false) {
             </div>
 
             <div class="mb-4">
-                <label class="form-label">Add Image</label>
+                <label class="form-label">Add Image (Optional)</label>
                 <input type="file" class="form-control" name="cover_image">
             </div>
 
