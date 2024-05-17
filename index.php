@@ -22,7 +22,6 @@ if (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/post.css">
@@ -46,7 +45,11 @@ if (
     ?>
         <div class="container mt-5">
             <div class="d-flex row justify-content-center">
-                <!-- <h1>Got so many posts</h1> -->
+                <?php if (isset($_GET['error'])) { ?>
+                    <div class="alert alert-warning main-blog post-card">
+                        <?php echo htmlspecialchars($_GET['error']) ?>
+                    </div>
+                <?php } ?>
                 <?php if ($posts != 0) { ?>
                     <!-- <h2>At least one post</h2> -->
 
@@ -109,12 +112,12 @@ if (
                                 <div class="d-flex justify-content-between">
                                     <div class="react-btns" style="padding-left: 15px; padding-bottom: 10px; margin-bottom:10px;">
                                         <?php if ($liked_by_cur_user) { ?>
-                                            <i class="fa fa-heart liked like-btn" post-id="<?= $post_id ?>" liked="1" aria-hidden="true"></i>
+                                            <i class="fa fa-heart liked like-btn" post-id="<?php echo $post_id ?>" liked="1" aria-hidden="true"></i>
                                         <?php } else { ?>
-                                            <i class="fa fa-heart like like-btn" post-id="<?= $post_id ?>" liked="0" aria-hidden="true"></i>
+                                            <i class="fa fa-heart like like-btn" post-id="<?php echo $post_id ?>" liked="0" aria-hidden="true"></i>
                                         <?php } ?>
 
-                                        <text>Likes ( <?php echo $total_like ?> ) &nbsp; &nbsp;</text>
+                                        <text>Likes ( <span><?php echo $total_like ?> </span> ) &nbsp; &nbsp;</text>
                                         <a href="blog-view.php?post_id=<?= $post['post_id'] ?>#comments">
                                             <i class="fa fa-comment" aria-hidden="true"></i> <text>Comments (
                                                 <?php
@@ -141,6 +144,31 @@ if (
                 <?php } ?>
             </div>
         </div>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $(".like-btn").click(function() {
+                    var post_id = $(this).attr('post-id');
+                    var liked = $(this).attr('liked');
+                    var $span = $(this).siblings('text').find('span');
+                    // console.log(post_id);
+                    // console.log(liked);
+
+                    if (liked == 1) {
+                        $(this).attr('liked', '0');
+                        $(this).removeClass('liked');
+                    } else {
+                        $(this).attr('liked', '1');
+                        $(this).addClass('liked');
+                    }
+                    $span.load("include/like-unlike.php", {
+                        post_id: post_id
+                    });
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <?php } ?>
 

@@ -26,7 +26,7 @@ if (
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100 backdrop">
 
-        <form class="shadow w-450 p-3 frontdrop" action="./include/signup.inc.php" method="post">
+        <form class="shadow w-450 p-3 frontdrop" action="./include/signup.inc.php" method="post" enctype="multipart/form-data">
 
             <h4 class="display-4  fs-1">Create Account</h4><br>
 
@@ -69,8 +69,9 @@ if (
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Select your profile picture</label>
+                <label class="form-label">Add Image (Optional)</label>
                 <input type="file" class="form-control" name="profile_picture">
+                <small class="text-muted">Max Size: 3 MB</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Sign Up</button>
