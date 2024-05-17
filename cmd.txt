@@ -1,1 +1,19 @@
 Alien, Friendly-looking, green skin, big eyes, welcoming smile, Holding a placard or sign Content: "To see and post, please log in to your account." Style: Clear, readable font Background: Milky Way galaxy, Stunning, vibrant colors, sense of outer space wonder . Overall Vibe: Inviting, whimsical, Vibrant, engaging
+
+
+
+
+1700s fantasy-steampunk. making the painting visually striking and engaging, meticulous detail with charcoal-like texture, emphasizing an Alien, Friendly-looking, green skin, big eyes,Holding a placard or sign Content
+ontrasts and fine lines. The background features dense forest, adding to the atmospheric depth., vibrant
+
+
+
+<div>
+                        <h1>There are so many posts</h1>
+                        <h2>This is the index page</h2>
+                        <h4>Current User Registration ID: <?php echo $_SESSION['reg_no'] ?></h4>
+                        <h4>Current User Username: <?php echo $_SESSION['username'] ?></h4>
+                        <h4>Current User User ID: <?php echo $_SESSION['user_id'] ?></h4>
+                        <h4>Current User Profile Picture: <?php echo $_SESSION['profile_picture'] ?></h4>
+
+                    </div>

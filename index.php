@@ -33,14 +33,69 @@ if (
         <div class="d-flex flex-column align-items-center justify-content-center">
             <img src="./image/alien.png" alt="Log in to see post" class="shadow m-3 centered-image mb-3">
         </div>
-    <?php } else { ?>
-        <div>
-            <h2>This is the index page</h2>
-            <h4>Current User Registration ID: <?php echo $_SESSION['reg_no'] ?></h4>
-            <h4>Current User Username: <?php echo $_SESSION['username'] ?></h4>
-            <h4>Current User User ID: <?php echo $_SESSION['user_id'] ?></h4>
-            <h4>Current User Profile Picture: <?php echo $_SESSION['profile_picture'] ?></h4>
+    <?php } else {
 
+        include_once './include/db_conn.inc.php';
+        include_once './include/functions.inc.php';
+
+        $posts = getAllPost($pdo);
+    ?>
+        <div class="container mt-5">
+            <div class="d-flex row justify-content-center">
+                <!-- <h1>Got so many posts</h1> -->
+                <?php if ($posts != 0) { ?>
+                    <!-- <h2>At least one post</h2> -->
+
+                    <main class="main-blog">
+
+                        <?php foreach ($posts as $post) {
+                            $creator_name = "Unknown User";
+                            $creator_image = "default_user.jpg";
+                            $creator_reg = "000";
+                            $creator = getCreatorInfo($pdo, $post['user_id']);
+                            if ($creator != 0) {
+                                $creator_name = $creator['username'];
+                                $creator_reg = $creator['reg_no'];
+                                $creator_image = $creator['profile_picture'];
+                            }
+                        ?>
+                            <!-- <h3>Here is one post</h3> -->
+
+                            <div class="post-card mb-5">
+
+                                <div class="post-profile-section">
+                                    <img src="./image/profile/<?php echo $creator_image ?>" class="post-profile-section-img" alt="Profile Image">
+                                    <div class="post-profile-info">
+                                        <span class="post-profile-name"><?php echo $creator_name ?> &middot <span style="font-size: 12px; color: #999;"><?php echo $creator_reg ?></span></span>
+                                        <span class="post-profile-time">Posted on <?php echo $post['created_at'] ?></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="post-text">
+                                    <p>
+                                        <?php echo $post['content'] ?>
+                                    </p>
+                                </div>
+
+                                <?php if ($post['cover_image'] != "default.jpg") { ?>
+                                    <img src="./image/cover/<?php echo $post['cover_image'] ?>" class="post-img" alt="cover_image">
+                                <?php } ?>
+
+
+
+
+                            </div>
+                        <?php } ?>
+                    </main>
+                <?php } else { ?>
+
+                    <div class="alert alert-warning">
+                        No posts yet
+                    </div>
+
+                <?php } ?>
+            </div>
         </div>
 
     <?php } ?>

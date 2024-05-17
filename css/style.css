@@ -130,6 +130,9 @@ img {
 }
 
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: #6f42c1;
     color: #fff;
 }
@@ -218,4 +221,60 @@ img {
         left: 48px !important;
 
     }
+}
+
+
+.post-card {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-img {
+    width: 100%;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.post-text {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.post-profile-section {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.post-profile-section-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-profile-section .post-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-profile-section .post-profile-name {
+    padding-top: 10px;
+    font-weight: bold;
+    margin-bottom: -4px;
+    /* margin-top: -5px; */
+}
+
+.post-profile-section .post-profile-time {
+    font-size: 0.75em;
+    color: #555;
+    padding-bottom: 10px;
 }
