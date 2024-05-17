@@ -31,8 +31,8 @@ if (
             $image_temp = $_FILES['cover_image']['tmp_name'];
             $error = $_FILES['cover_image']['error'];
             if ($error === 0) {
-                if ($image_size > 1000000) {
-                    $err = "This file is too large. Max size = 1MB";
+                if ($image_size > 3000000) {
+                    $err = "This file is too large. Max size = 3MB";
                     header("Location: ../create-post.php?error=$err");
                     exit;
                 } else {

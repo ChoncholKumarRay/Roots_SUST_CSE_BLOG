@@ -57,6 +57,7 @@ if ($logged == false) {
             <div class="mb-4">
                 <label class="form-label">Add Image (Optional)</label>
                 <input type="file" class="form-control" name="cover_image">
+                <small class="text-muted">Max Size: 3 MB</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Post</button>
