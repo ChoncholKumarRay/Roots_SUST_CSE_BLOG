@@ -21,6 +21,7 @@ if (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -112,13 +113,13 @@ if (
                                 <div class="d-flex justify-content-between">
                                     <div class="react-btns" style="padding-left: 15px; padding-bottom: 10px; margin-bottom:10px;">
                                         <?php if ($liked_by_cur_user) { ?>
-                                            <i class="fa fa-heart liked like-btn" post-id="<?php echo $post_id ?>" liked="1" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-heart red-heart love-btn" post-id="<?php echo $post_id ?>" loved="1" aria-hidden="true"></i>
                                         <?php } else { ?>
-                                            <i class="fa fa-heart like like-btn" post-id="<?php echo $post_id ?>" liked="0" aria-hidden="true"></i>
+                                            <i class="fa-regular fa-heart love-btn" post-id="<?php echo $post_id ?>" loved="0" aria-hidden="true"></i>
                                         <?php } ?>
 
                                         <text>Likes ( <span><?php echo $total_like ?> </span> ) &nbsp; &nbsp;</text>
-                                        <a href="blog-view.php?post_id=<?= $post['post_id'] ?>#comments">
+                                        <a href="./post.php?post_id=<?php echo $post_id ?>#comments-thread">
                                             <i class="fa fa-comment" aria-hidden="true"></i> <text>Comments (
                                                 <?php
                                                 echo $total_comment;
@@ -148,19 +149,23 @@ if (
 
         <script>
             $(document).ready(function() {
-                $(".like-btn").click(function() {
+                $(".love-btn").click(function() {
                     var post_id = $(this).attr('post-id');
-                    var liked = $(this).attr('liked');
+                    var loved = $(this).attr('loved');
                     var $span = $(this).siblings('text').find('span');
                     // console.log(post_id);
                     // console.log(liked);
 
-                    if (liked == 1) {
-                        $(this).attr('liked', '0');
-                        $(this).removeClass('liked');
+                    if (loved == 1) {
+                        $(this).attr('loved', '0');
+                        $(this).removeClass('red-heart');
+                        $(this).removeClass('fa-solid');
+                        $(this).addClass('fa-regular');
                     } else {
-                        $(this).attr('liked', '1');
-                        $(this).addClass('liked');
+                        $(this).attr('loved', '1');
+                        $(this).removeClass('fa-regular');
+                        $(this).addClass('fa-solid');
+                        $(this).addClass('red-heart');
                     }
                     $span.load("include/like-unlike.php", {
                         post_id: post_id

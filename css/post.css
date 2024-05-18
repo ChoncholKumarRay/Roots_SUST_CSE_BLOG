@@ -55,3 +55,18 @@
     color: #555;
     padding-bottom: 10px;
 }
+
+.comment-box-text {
+    width: 600px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    border-radius: 5px;
+}
+
+i.red-heart {
+    color: #ed333b;
+}

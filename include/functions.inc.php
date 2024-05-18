@@ -1,5 +1,5 @@
 <?php
-
+//---------------Functions for Post-------------------------
 //Get All Post
 function getAllPost($pdo)
 {
@@ -10,6 +10,22 @@ function getAllPost($pdo)
     if ($statement->rowCount() > 0) {
         $posts = $statement->fetchAll();
         return $posts;
+    } else {
+        return 0;
+    }
+}
+
+
+function getPostbyID($pdo, $post_id)
+{
+    $query = "SELECT * FROM post WHERE post_id = :post_id;";
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(":post_id", $post_id);
+    $statement->execute();
+
+    if ($statement->rowCount() == 1) {
+        $post = $statement->fetch();
+        return $post;
     } else {
         return 0;
     }
@@ -38,6 +54,7 @@ function formatDateTime($datetimeString)
     return $formattedDateTime;
 }
 
+//--------------------Functions for Like----------------------
 
 function isLikedByUserID($pdo, $post_id, $user_id)
 {
@@ -64,6 +81,9 @@ function likeCountByPostID($pdo, $post_id)
     return $statement->rowCount();
 }
 
+
+//----------------------Functions for Comments----------------
+
 function commentCountByPostID($pdo, $post_id)
 {
     $query = "SELECT * FROM comment WHERE post_id=:post_id";
@@ -72,4 +92,18 @@ function commentCountByPostID($pdo, $post_id)
     $statement->execute();
 
     return $statement->rowCount();
+}
+
+function getCommentsByPostID($pdo, $post_id)
+{
+    $query = "SELECT * FROM comment WHERE post_id=? ORDER BY comment_id desc";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$post_id]);
+
+    if ($stmt->rowCount() >= 1) {
+        $data = $stmt->fetchAll();
+        return $data;
+    } else {
+        return 0;
+    }
 }
