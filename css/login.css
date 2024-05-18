@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+
+}
+
+.left-div,
+.right-div {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+
+
+.left-div {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.left-div img {
+    width: 365px;
+    height: auto;
+}
+
+.right-div form {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-div form input,
+.right-div form textarea {
+    margin-bottom: 10px;
+}
