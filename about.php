@@ -20,8 +20,10 @@ if (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>About</title>
 </head>
@@ -30,13 +32,46 @@ if (
     <?php
     include './include/main_menu.php';
     ?>
-    <div class="container text-center mt-3">
-        <h1>About Us</h1>
-        <h2 style="text-align: left;">Project Goal</h2>
-        <h4 class="text-muted" style="text-align: justify; line-height: 1.5;">Our proposed project aims to develop a social networking platform for the students and alumni of SUST CSE Department. This platform will serve as a hub for current students and alumni to connect, share experiences, and stay updated on departmental news and events. Users will be able to create accounts using their unique Registration IDs, Username and Password, Log in to the site, and post contents (both text and images). Other users will see the post on their feed. Also they will have the ability to like, and comment on posts. There will be an admin panel to manage the users. The platform will feature an intuitive admin panel enabling efficient management of users, posts, and comments, ensuring a safe and engaging digital environment. Admin panel will be empowered to add and delete any users, post or comments directly.Moreover, Through this innovative platform, we aim to cultivate a thriving online community, enriching the academic and professional journeys of all its members.
-        </h4>
-        <hr>
-        <h2 class="mt-4">Our Team</h2>
+    <div class="abt-container">
+        <header>
+            <h1>About Us</h1>
+            <p class="tagline" style="padding-top: 25px;">We are Team Chaos Trio from SUST CSE-20. This is our project for Database System Lab (Course Code- CSE 334)</p>
+        </header>
+        <section class="about-section">
+            <h2>Our Aim</h2>
+            <p>
+                Our aim was to develop a social networking platform for the students and alumni of the SUST CSE
+                Department. This platform will serve as a hub for current students and alumni of SUST CSE to connect,
+                share experiences, and stay updated on departmental news and events.
+            </p>
+        </section>
+        <section class="features-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Users will be able to create accounts using their unique Registration IDs, Username, and Password.
+                </li>
+                <li>Log in to the site using Registration ID and Password.</li>
+                <li>Only logged-in users can view and create posts. A post can contain both text and images.</li>
+                <li>Other users who are logged in can see the post on their feed.</li>
+                <li>All users have the ability to like and comment on any posts.</li>
+            </ul>
+        </section>
+        <section class="future-section">
+            <h2>Future Development</h2>
+            <ul>
+                <li>There will be an admin panel to manage the users, posts, and comments.</li>
+                <li>Admin panel will be empowered to add and delete any users, posts, or comments directly.</li>
+                <li>Improve the security of the website.</li>
+            </ul>
+        </section>
+        <section class="technology-section">
+            <h2>Used Technology</h2>
+            <ul>
+                <li>Front-end: <i class="fa-brands fa-html5" style="color: #ed333b;"></i> HTML, <i class="fa-brands fa-css3" style="color: #1c71d8;"></i> CSS, <i class="fa-brands fa-js" style="color: #f5c211;"></i> JavaScript</li>
+                <li>Back-end: <i class="fa-brands fa-php" style="color: #c061cb;"></i> PHP</li>
+            </ul>
+        </section>
+        <h2>Our Team</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
             <div class="col">
                 <div class="card">
@@ -94,6 +129,7 @@ if (
             </div>
 
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
