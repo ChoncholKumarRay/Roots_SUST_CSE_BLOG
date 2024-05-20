@@ -33,6 +33,7 @@ if (
     <?php
     include './include/main_menu.php';
     ?>
+    <!-- Alien logo for unauthorize viewer -->
     <?php if ($logged == false) { ?>
         <div class="d-flex flex-column align-items-center justify-content-center">
             <img src="./image/alien.png" alt="Log in to see post" class="shadow m-3 centered-image mb-3">
@@ -70,6 +71,7 @@ if (
                             $creator_reg = "000";
                             $creator_type = "";
                             $reg_color = "#999"; //By default silver color
+
                             /*Getting details about the post creator*/
                             $creator = getCreatorInfo($pdo, $post_creator);
                             if ($creator != 0) {
@@ -128,18 +130,13 @@ if (
                                         </a>
                                     </div>
                                 </div>
-
-
-
-
-
                             </div>
                         <?php } ?>
                     </main>
                 <?php } else { ?>
 
                     <div class="alert alert-warning">
-                        No posts yet
+                        No posts yet!
                     </div>
 
                 <?php } ?>

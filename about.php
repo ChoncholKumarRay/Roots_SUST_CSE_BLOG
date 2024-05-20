@@ -71,6 +71,8 @@ if (
                 <li>Back-end: <i class="fa-brands fa-php" style="color: #c061cb;"></i> PHP</li>
             </ul>
         </section>
+
+        <!-- Team member details start here -->
         <h2>Our Team</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
             <div class="col">

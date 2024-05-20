@@ -30,7 +30,7 @@ if (
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/post.css">
-    <title>About</title>
+    <title>Post Details</title>
 </head>
 
 <body>
@@ -61,6 +61,7 @@ if (
         $creator_reg = "000";
         $creator_type = "";
         $reg_color = "#999"; //By default silver color
+
         /*Getting details about the post creator*/
         $creator = getCreatorInfo($pdo, $post_creator);
         if ($creator != 0) {
@@ -72,11 +73,12 @@ if (
                 $reg_color = "#D1B000"; //Golden color for alumni
         }
 
-        // Comments Details 
+        // Comments Count
         $total_comments = commentCountByPostID($pdo, $post_id);
     ?>
         <div class="container mt-5">
             <div class="d-flex row justify-content-center">
+                <!-- Show Error and Success Message while commenting -->
                 <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger main-blog post-card" role="alert">
                         <?php echo htmlspecialchars($_GET['error']); ?>
@@ -87,9 +89,12 @@ if (
                         <?php echo htmlspecialchars($_GET['success']); ?>
                     </div>
                 <?php } ?>
+
+                <!-- The post is showing here -->
                 <main class="main-blog">
                     <div class="post-card mb-5" style="padding-bottom: 15px;">
 
+                        <!-- Post Creator Details Section -->
                         <div class="post-profile-section">
                             <img src="./image/profile/<?php echo $creator_image ?>" class="post-profile-section-img" alt="Profile Image">
                             <div class="post-profile-info">
@@ -103,6 +108,8 @@ if (
                             </p>
                         </div>
 
+
+                        <!-- Handling Whether the post have an image -->
                         <?php if ($post_image != "default.jpg") { ?>
                             <img src="./image/cover/<?php echo $post_image ?>" class="post-img" alt="cover_image">
                         <?php } ?>
@@ -110,6 +117,7 @@ if (
                         <text style="padding-left: 15px; padding-bottom: 15px;"> <?php echo $total_comments ?> comments </text>
                         <hr>
 
+                        <!-- Add comment form -->
                         <form action="./include/comment.inc.php" method="post" id="add-comment" style="padding: 15px; padding-top:0px; padding-bottom: 0px;">
 
                             <h5 class="mt-4 text-secondary">Add comment</h5>
@@ -120,6 +128,8 @@ if (
                             <button type="submit" class="btn btn-primary">Comment</button>
                         </form>
                         <hr>
+
+                        <!-- Show all comments -->
                         <?php
                         $comments = getCommentsByPostID($pdo, $post_id);
                         // echo $comments;
@@ -141,7 +151,7 @@ if (
                                     $reg_color = "#D1B000";
 
                         ?>
-                                <!-- <div class="comment"> -->
+                                <!-- Show each comment -->
                                 <div class="post-profile-section">
                                     <img src="./image/profile/<?php echo $commentor_image ?>" class="post-profile-section-img" alt="Commentor Image">
                                     <div class="post-profile-info">
@@ -152,21 +162,15 @@ if (
                                 <div class="comment-box-text">
                                     <?php echo $comment_text ?>
                                 </div>
-                                <!-- </div> -->
-
                             <?php }
                         } else { ?>
                             <p style="padding-left: 15px; padding-bottom:0px; margin-bottom:0px;">No Comments Yet. Be the first one...</p>
                         <?php }
-
                         ?>
                     </div>
-
                 </main>
-
             </div>
         </div>
-
     <?php } else {
         header("Location: ./index.php");
         exit;
