@@ -1,36 +1,7 @@
 <?php
-//---------------Functions for Post-------------------------
-//Get All Post
-function getAllPost($pdo)
-{
-    $query = "SELECT * FROM post ORDER BY created_at DESC;";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
-
-    if ($statement->rowCount() > 0) {
-        $posts = $statement->fetchAll();
-        return $posts;
-    } else {
-        return 0;
-    }
-}
 
 
-function getPostbyID($pdo, $post_id)
-{
-    $query = "SELECT * FROM post WHERE post_id = :post_id;";
-    $statement = $pdo->prepare($query);
-    $statement->bindParam(":post_id", $post_id);
-    $statement->execute();
-
-    if ($statement->rowCount() == 1) {
-        $post = $statement->fetch();
-        return $post;
-    } else {
-        return 0;
-    }
-}
-
+//-------------Functions for user & others-------------------------
 function getCreatorInfo($pdo, $user_id)
 {
     $query = "SELECT * FROM users WHERE user_id = $user_id;";
@@ -52,6 +23,37 @@ function formatDateTime($datetimeString)
     $formattedDateTime = $datetime->format('F d, Y \a\t g:i A');
 
     return $formattedDateTime;
+}
+
+//---------------Functions for Post-------------------------
+//Get All Post
+function getAllPost($pdo)
+{
+    $query = "SELECT * FROM post ORDER BY created_at DESC;";
+    $statement = $pdo->prepare($query);
+    $statement->execute();
+
+    if ($statement->rowCount() > 0) {
+        $posts = $statement->fetchAll();
+        return $posts;
+    } else {
+        return 0;
+    }
+}
+
+function getPostbyID($pdo, $post_id)
+{
+    $query = "SELECT * FROM post WHERE post_id = :post_id;";
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(":post_id", $post_id);
+    $statement->execute();
+
+    if ($statement->rowCount() == 1) {
+        $post = $statement->fetch();
+        return $post;
+    } else {
+        return 0;
+    }
 }
 
 //--------------------Functions for Like----------------------

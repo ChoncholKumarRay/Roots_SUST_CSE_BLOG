@@ -14,6 +14,7 @@ if (
         isset($_POST['content'])
         && isset($_FILES['cover_image'])
     ) {
+        // Getting the post details and creator id
         $content = $_POST['content'];
         $user_id = $_SESSION['user_id'];
         $username = $_SESSION['username'];
@@ -26,6 +27,7 @@ if (
         }
 
 
+        // Unload contents that have photo too
         if ($cover_image_name != "") {
             $image_size = $_FILES['cover_image']['size'];
             $image_temp = $_FILES['cover_image']['tmp_name'];

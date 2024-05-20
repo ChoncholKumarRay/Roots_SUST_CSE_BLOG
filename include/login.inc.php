@@ -23,12 +23,15 @@ if (
     } else {
         try {
             require_once './db_conn.inc.php';
-            $sql = "SELECT * FROM users WHERE reg_no = '$reg_no'";
-            $result = $pdo->query($sql);
+            $query = "SELECT * FROM users WHERE reg_no = :reg_id;";
+            $statement = $pdo->prepare($query);
+            $statement->bindParam(":reg_id", $reg_no);
+            $statement->execute();
 
-            if ($result->rowCount() == 1) {
+            // Getting the user detals associated with the registration no
+            if ($statement->rowCount() == 1) {
 
-                $user = $result->fetch();
+                $user = $statement->fetch();
 
                 $username =  $user['username'];
                 $user_id = $user['user_id'];
@@ -41,7 +44,7 @@ if (
                     $_SESSION['reg_no'] = $reg_no;
                     $_SESSION['username'] = $username;
                     $_SESSION['profile_picture'] = $profile_picture;
-                    $_SESSION['status'] = "logged";
+                    $_SESSION['status'] = "logged"; // Just for a global variable
                     header("Location: ../index.php");
                     exit;
                 } else {

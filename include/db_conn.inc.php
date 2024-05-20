@@ -1,5 +1,6 @@
 <?php
 
+// Database connection for local hosting
 
 $host = 'localhost';
 $dbname = 'roots_db';

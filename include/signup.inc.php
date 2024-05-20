@@ -4,7 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     exit;
 }
 
-
 if (
     isset($_POST["reg_no"]) &&
     isset($_POST["email"]) &&
@@ -13,13 +12,14 @@ if (
     isset($_POST["user_type"])
 ) {
 
+    // Getting form details sent by post method
     $reg_no = htmlspecialchars($_POST['reg_no']);
     $email = htmlspecialchars($_POST['email']);
     $username = htmlspecialchars($_POST['username']);
     $pwd = htmlspecialchars($_POST['pwd']);
     $user_type = htmlspecialchars($_POST['user_type']);
     $profile_picture = $_FILES['profile_picture']['name'];
-    echo "<script>console.log('{$profile_picture}');</script>";
+    // echo "<script>console.log('{$profile_picture}');</script>";
 
     if (empty($reg_no)) {
         $err_msg = "Unsuccessful! Registration ID is required!";
@@ -42,6 +42,7 @@ if (
         header("Location: ../signup.php?error=$err_msg");
         exit;
     } else {
+        // User account without profile picture
         if ($profile_picture == "") {
             try {
                 require_once './db_conn.inc.php';
@@ -59,6 +60,7 @@ if (
                 die("Fatal Error Happened: " . $e->getMessage());
             }
         } else {
+            // Create user account with profile picture
             $image_size = $_FILES['profile_picture']['size'];
             $image_temp = $_FILES['profile_picture']['tmp_name'];
             $error = $_FILES['profile_picture']['error'];
@@ -71,9 +73,10 @@ if (
                 } else {
                     $image_extension = pathinfo($profile_picture, PATHINFO_EXTENSION);
                     $image_extension = strtolower($image_extension);
-                    $allowed_extension = array('png', 'jpg', 'jpeg');
+                    $allowed_extension = array('png', 'jpg', 'jpeg');   // Allowed image extension
 
                     if (in_array($image_extension, $allowed_extension)) {
+                        //Generate a generalize unique name for each profile picture
                         $upload_image_name = uniqid("profile_picture-", false) . date('YmdHis') . '.' . $image_extension;
 
                         $upload_path = "../image/profile/" . $upload_image_name;
